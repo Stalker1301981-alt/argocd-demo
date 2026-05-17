@@ -1,0 +1,23 @@
+name: Deploy to ArgoCD
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'helm-chart/**'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Validate Helm chart
+        run: |
+          docker run --rm -v ${{ github.workspace }}:/workspace alpine/helm:3.14.0 \
+            lint /workspace/helm-chart
+      
+      - name: Notify ArgoCD
+        run: |
+          echo "✅ Chart validated. ArgoCD auto-sync will pick up changes."
+          echo "Commit: ${{ github.sha }}"
+          echo "Changed files: helm-chart/"
