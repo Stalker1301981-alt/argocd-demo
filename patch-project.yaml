@@ -1,0 +1,15 @@
+spec:
+  clusterResourceWhitelist:
+  - group: ""
+    kind: Namespace
+  - group: ""
+    kind: Deployment
+  - group: apps
+    kind: Deployment
+  namespaceResourceWhitelist:
+  - group: ""
+    kind: Service
+  - group: apps
+    kind: Deployment
+  - group: ""
+    kind: Namespace

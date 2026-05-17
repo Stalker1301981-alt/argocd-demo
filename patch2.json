@@ -1,0 +1,4 @@
+[
+  {"op":"remove","path":"/spec/clusterResourceWhitelist/0"},
+  {"op":"add","path":"/spec/namespaceResourceWhitelist/-","value":{"group":"apps","kind":"Deployment"}}
+]
